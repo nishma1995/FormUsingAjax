@@ -23,14 +23,27 @@ namespace FormUsingAjax
             public string email;
             public string phone;
             public string gender;
-            public string gender2;
+        }
             [WebMethod]
-            public static string SaveData(string firstname, string lastname,string email,string phone,string gender,string gender2)
+            public  void SaveData(string firstname, string lastname,string email,string phone,string gender)
             {
             string connection = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
-                using (SqlConnection con = new SqlConnection(connect))
+                using (SqlConnection con = new SqlConnection(connection))
+                {
+                    SqlCommand command = new SqlCommand("StudentInsert", con);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    con.Open();
+                    command.Parameters.AddWithValue("@FirstName", firstname);
+                    command.Parameters.AddWithValue("@LastName", lastname);
+                    command.Parameters.AddWithValue("@Email", email);
+                    command.Parameters.AddWithValue("@Phone", phone);
+                    command.Parameters.AddWithValue("@Gender", gender);
+                    command.ExecuteNonQuery();
+                    con.Close();
+                    //return "Submit";
+                }
             }
 
-        }
+        
     }
 }

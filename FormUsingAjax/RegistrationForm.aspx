@@ -9,26 +9,29 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#btnSubmit").click(function () {
-                var firstname = $('[id*=txtFirst]').val();
-                var lastname = $('[id*=TxtLast]').val();
-                var email = $('[id*=txtEmail]').val();
-                var phone = $('[id*=txtPhone]').val();
-                var gender = $('[id*=CbFemale]').val();
-                var gender2 = $('[id*=cbMale]').val();
-                if (firstname.value == "" || lastname.value == "" || phone.value == "" || email.value == "") {
+                var firstname = document.getElementById("txtFirst");
+                var lastname = document.getElementById("TxtLast");
+                var email = document.getElementById("txtEmail");
+                var phone = document.getElementById("txtPhone");
+                var gender = document.getElementById("txtGender");
+                if (firstname.value== "" || lastname.value == "" || phone.value == "" || email.value == "") {
                     alert("please enter all fields");
                 }
                 $.ajax({
-                    type: 'POST',
-                    url: '<%= Page.ResolveUrl("~/EmployeeService.asmx/DeleteFile")%>',
-                    data: '{firstname:' + firstname.value + ',lastname:' + lastname.value + ',email:' + email.value + ',phone:' + phone.value + ',gender:' + gender.value + ' gender2:' + gender2.value + '}',
-                   contentType: "application/json; charset=utf-8",
+                    type: "POST",
+                    contentType: "application/json",
+                    url: "RegistrationForm.aspx/SaveData",
+                    data: "{'firstname':'" + firstname + "','lastname':'" + lastname + "','email':'" + email + "','phone':'" + phone + "','gender':'" + gender + "'}",
                    dataType: "json",
                    success: function (data) {
-                       Show_data();
+                       //Show_data();
                        alert("submit successfully");
-                       ClearField()
-                   }
+                      // ClearField()
+                    },
+                   error: function (error) {
+                       alert("error");
+                       //console.log(JSON.stringify(error));
+                    }
                });
             });
 
@@ -49,6 +52,7 @@
             height: 26px;
         }
     </style>
+    </head>
 <body>
 <form id="form1" runat="server">
     <table class="auto-style1">
@@ -79,8 +83,7 @@
         <tr>
             <td class="auto-style2">Gender</td>
             <td>
-                <asp:CheckBox ID="CbFemale" runat="server" Text="Female" />
-                <asp:CheckBox ID="cbMale" runat="server" Text="Male" />
+                <asp:TextBox ID="txtGender" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>

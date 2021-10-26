@@ -60,22 +60,13 @@ namespace FormUsingAjax
         protected global::System.Web.UI.WebControls.TextBox txtPhone;
 
         /// <summary>
-        /// CbFemale control.
+        /// txtGender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CbFemale;
-
-        /// <summary>
-        /// cbMale control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbMale;
+        protected global::System.Web.UI.WebControls.TextBox txtGender;
 
         /// <summary>
         /// btnSubmit control.
