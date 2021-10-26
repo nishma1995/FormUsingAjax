@@ -21,7 +21,7 @@
                     type: "POST",
                     contentType: "application/json",
                     url: "RegistrationForm.aspx/SaveData",
-                    data: "{'firstname':'" + firstname + "','lastname':'" + lastname + "','email':'" + email + "','phone':'" + phone + "','gender':'" + gender + "'}",
+                    data: "{'firstname':'" + firstname.value + "','lastname':'" + lastname.value + "','email':'" + email.value + "','phone':'" + phone.value + "','gender':'" + gender.value + "'}",
                    dataType: "json",
                    success: function (data) {
                        //Show_data();

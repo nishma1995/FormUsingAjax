@@ -25,7 +25,7 @@ namespace FormUsingAjax
             public string gender;
         }
             [WebMethod]
-            public  void SaveData(string firstname, string lastname,string email,string phone,string gender)
+            public  static string SaveData(string firstname, string lastname,string email,string phone,string gender)
             {
             string connection = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
                 using (SqlConnection con = new SqlConnection(connection))
@@ -40,7 +40,7 @@ namespace FormUsingAjax
                     command.Parameters.AddWithValue("@Gender", gender);
                     command.ExecuteNonQuery();
                     con.Close();
-                    //return "Submit";
+                    return "Submit";
                 }
             }
 
